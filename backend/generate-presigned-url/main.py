@@ -21,7 +21,7 @@ def lambda_handler(event, context):
         }
     # request allowed from any origin, any header and POST/GET/Option method allowed
     try:
-        body = json.loads(event["body"]) # parse data which you have submitted
+        body = json.loads(event["body"]) 
         filename = body.get("filename")
         content_type = body.get("contentType")
         full_name = body.get("fullName")
@@ -29,7 +29,7 @@ def lambda_handler(event, context):
         notes = body.get("notes")
 
         # Log or process these fields as needed
-        print(f"Received upload from: {full_name} ({email}), Notes: {notes}") # generate Log
+        print(f"Received upload from: {full_name} ({email}), Notes: {notes}") 
 
         if not filename or not content_type:
             return {
@@ -54,7 +54,7 @@ def lambda_handler(event, context):
             ExpiresIn=300
         )
 # creates temporary S3 Upload URL
-# Anuone with this URL can upload one file
+# Anyone with this URL can upload one file
 # valid for 5 minutes
         return {
             "statusCode": 200,
